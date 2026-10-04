@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { work } from "@/data/work";
+import { projects } from "@/content/projects";
+import { siteContent } from "@/content/site";
 import styles from "../../interior.module.css";
 
 type CaseStudyPageProps = {
@@ -9,40 +10,40 @@ type CaseStudyPageProps = {
 };
 
 export function generateStaticParams() {
-  return work.map(({ slug }) => ({ slug }));
+  return projects.map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: CaseStudyPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const project = work.find((item) => item.slug === slug);
+  const project = projects.find((item) => item.slug === slug);
 
   return {
-    title: project?.title ?? "Work",
-    description: project?.summary ?? "Software engineering and analysis case study.",
+    title: project?.title ?? siteContent.pages.work.title,
+    description: project?.summary ?? siteContent.metadata.pages.work.description,
   };
 }
 
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const { slug } = await params;
-  const project = work.find((item) => item.slug === slug);
+  const project = projects.find((item) => item.slug === slug);
 
   if (!project) {
     notFound();
   }
 
   const sections = [
-    { label: "Problem", value: project.problem },
-    { label: "What I built", value: project.built },
-    { label: "Stack", value: project.stack },
-    { label: "Result", value: project.result },
-    { label: "Link", value: project.link },
+    { label: siteContent.pages.caseStudy.labels.problem, value: project.problem },
+    { label: siteContent.pages.caseStudy.labels.whatIBuilt, value: project.whatIBuilt },
+    { label: siteContent.pages.caseStudy.labels.stack, value: project.stack },
+    { label: siteContent.pages.caseStudy.labels.result, value: project.result },
+    { label: siteContent.pages.caseStudy.labels.links, value: project.links },
   ];
 
   return (
     <main className={styles.main}>
       <section className={styles.headingGrid}>
         <div>
-          <p className={styles.eyebrow}>{project.discipline}</p>
+          <p className={styles.eyebrow}>{project.category}</p>
           <h1 className={styles.caseTitle}>{project.title}</h1>
           <p className={styles.caseIntro}>{project.summary}</p>
         </div>
@@ -56,7 +57,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         </section>
       ))}
       <Link className={styles.backLink} href="/work">
-        Back to work
+        {siteContent.pages.caseStudy.backToWork}
       </Link>
     </main>
   );

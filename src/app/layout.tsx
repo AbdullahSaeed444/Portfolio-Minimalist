@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { siteContent } from "@/content/site";
 import "./globals.css";
 
 const instrumentSans = localFont({
@@ -12,34 +13,24 @@ const instrumentSans = localFont({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://TODO-real-domain.invalid";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || siteContent.metadata.siteUrl;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "TODO: real name | Software engineer & analyst",
-    template: "%s | TODO: real name",
+    default: siteContent.metadata.title,
+    template: `%s | ${siteContent.name}`,
   },
-  description:
-    "Software engineer and data/business analyst. Open to remote and part-time contract work.",
+  description: siteContent.metadata.description,
   openGraph: {
-    title: "TODO: real name | Software engineer & analyst",
-    description:
-      "Software engineer and data/business analyst. Open to remote and part-time contract work.",
-    siteName: "TODO: real name",
+    title: siteContent.metadata.title,
+    description: siteContent.metadata.description,
+    siteName: siteContent.name,
     type: "website",
-    images: [
-      {
-        url: "/opengraph-image.svg",
-        width: 1200,
-        height: 630,
-        alt: "TODO: real name, software engineer and analyst",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/opengraph-image.svg"],
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,

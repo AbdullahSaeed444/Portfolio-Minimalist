@@ -1,25 +1,20 @@
 import { ProjectList } from "@/components/project-list";
+import { siteContent } from "@/content/site";
 import styles from "../interior.module.css";
 
-export const metadata = {
-  title: "Work",
-  description: "Selected software engineering and analysis work. Case study details are TODO: real content.",
-};
+export const metadata = siteContent.metadata.pages.work;
 
 export default function WorkPage() {
   return (
     <main className={styles.main}>
       <section className={styles.headingGrid} aria-labelledby="work-title">
         <div>
-          <p className={styles.eyebrow}>Selected work / 01</p>
+          <p className={styles.eyebrow}>{siteContent.pages.work.eyebrow}</p>
           <h1 className={styles.title} id="work-title">
-            Work
+            {siteContent.pages.work.title}
           </h1>
         </div>
-        <p className={styles.lede}>
-          Software engineering, data analysis, and business analysis. Case study
-          details: TODO: real content.
-        </p>
+        <p className={styles.lede}>{siteContent.pages.work.intro}</p>
       </section>
       <ProjectList />
     </main>

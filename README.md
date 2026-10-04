@@ -1,6 +1,6 @@
 # Portfolio
 
-Next.js App Router portfolio for a software engineer and data/business analyst. Personal details and case-study content are intentionally marked `TODO: real content` until verified information is available.
+Next.js App Router portfolio for a software engineer and data/business analyst. Personal details and case-study facts remain clearly marked until verified information is available.
 
 ## Development
 

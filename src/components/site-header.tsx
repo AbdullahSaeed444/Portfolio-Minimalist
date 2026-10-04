@@ -1,20 +1,15 @@
 import Link from "next/link";
+import { siteContent } from "@/content/site";
 import styles from "./site-header.module.css";
-
-const navigation = [
-  { href: "/work", label: "Work" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
 
 export function SiteHeader() {
   return (
     <header className={styles.header}>
-      <Link className={styles.name} href="/" aria-label="TODO: real name, home">
-        TODO: real name
+      <Link className={styles.name} href="/" aria-label={siteContent.navigation.homeAriaLabel}>
+        {siteContent.name}
       </Link>
-      <nav className={styles.navigation} aria-label="Main navigation">
-        {navigation.map((item) => (
+      <nav className={styles.navigation} aria-label={siteContent.navigation.ariaLabel}>
+        {siteContent.navigation.items.map((item) => (
           <Link className={styles.navLink} href={item.href} key={item.href}>
             {item.label}
           </Link>
