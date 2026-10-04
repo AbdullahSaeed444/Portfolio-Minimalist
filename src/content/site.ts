@@ -143,7 +143,7 @@ export const siteContent: SiteContent = {
     contact: {
       eyebrow: "Contact / 03",
       title: "Contact",
-      intro: "For remote and part-time contract work, contact me at:",
+      intro: "Hiring or have a project? Contact me at my email or via socials below.",
       emailLabel: "Email",
       socialsLabel: "Socials",
     },

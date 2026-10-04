@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import type { Viewport } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { siteContent } from "@/content/site";
@@ -38,10 +40,25 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f2f1eb" },
+    { media: "(prefers-color-scheme: dark)", color: "#11110f" },
+  ],
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={instrumentSans.variable} data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      className={instrumentSans.variable}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`(function(){var root=document.documentElement;var theme;try{var saved=localStorage.getItem("theme");theme=saved==="light"||saved==="dark"?saved:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch{theme=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}root.dataset.theme=theme;document.querySelectorAll('meta[name="theme-color"]').forEach(function(meta){meta.dataset.theme=meta.media.includes("dark")?"dark":"light";meta.media=meta.dataset.theme===theme?"all":"not all"})})();`}
+        </Script>
         <div className="siteShell">
           <SiteHeader />
           {children}

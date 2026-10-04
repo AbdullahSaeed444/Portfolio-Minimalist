@@ -6,6 +6,16 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
 }
 
 body {
@@ -31,6 +41,15 @@ a:hover {
 a:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: var(--space-1);
+}
+
+*,
+*::before,
+*::after {
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
 }
 
 button,
@@ -60,6 +79,6 @@ main {
   *::before,
   *::after {
     scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+    transition: none !important;
   }
 }

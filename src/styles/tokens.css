@@ -39,3 +39,13 @@
   --line-tight: 0.94;
   --line-normal: 1.5;
 }
+
+html[data-theme="dark"] {
+  --color-paper: #11110f;
+  --color-paper-bright: #f2f1eb;
+  --color-ink: #f2f1eb;
+  --color-muted: #aaa99f;
+  --color-rule: #3c3d36;
+  --color-accent: #f07856;
+  --color-focus: #ff987d;
+}

@@ -26,6 +26,14 @@
   text-decoration: none;
 }
 
+.themeToggle {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
 @media (max-width: 40rem) {
   .header {
     width: calc(100% - var(--space-8));
