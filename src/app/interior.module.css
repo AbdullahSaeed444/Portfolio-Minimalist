@@ -59,6 +59,25 @@
   margin-top: var(--space-4);
 }
 
+.socialRow {
+  display: grid;
+  grid-template-columns: minmax(5rem, 6rem) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: baseline;
+}
+
+.socialRow + .socialRow {
+  margin-top: var(--space-4);
+}
+
+.socialLabel {
+  color: var(--color-muted);
+}
+
+.socialLink {
+  color: var(--color-ink);
+}
+
 .caseTitle {
   margin: var(--space-0);
   font-size: var(--text-title);
@@ -108,6 +127,11 @@
 
   .section {
     padding-block: var(--space-6) var(--space-8);
+  }
+
+  .socialRow {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
   }
 
   .caseTitle {

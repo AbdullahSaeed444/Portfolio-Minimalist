@@ -3,6 +3,11 @@ export type SitePageMetadata = {
   description: string;
 };
 
+export type SiteSocial = {
+  label: string;
+  url: string;
+};
+
 export type SiteContent = {
   name: string;
   headline: {
@@ -14,6 +19,7 @@ export type SiteContent = {
   intro: string;
   availability: string;
   contactEmail: string;
+  socials: SiteSocial[];
   eyebrow: string;
   skills: string[];
   biography: string;
@@ -45,7 +51,13 @@ export type SiteContent = {
   pages: {
     work: { eyebrow: string; title: string; intro: string };
     about: { eyebrow: string; title: string; biographyLabel: string; skillsLabel: string };
-    contact: { eyebrow: string; title: string; intro: string; emailLabel: string };
+    contact: {
+      eyebrow: string;
+      title: string;
+      intro: string;
+      emailLabel: string;
+      socialsLabel: string;
+    };
     caseStudy: {
       labels: { problem: string; whatIBuilt: string; stack: string; result: string; links: string };
       backToWork: string;
@@ -66,7 +78,12 @@ export const siteContent: SiteContent = {
   intro:
     "Dashboards, portals, and content systems where each user's data stays private. I also build WordPress sites and custom React work.",
   availability: "Available for remote and part-time contract work.",
-  contactEmail: "TODO: real email",
+  contactEmail: "AbdullahSaeedAwan2002@gmail.com",
+  socials: [
+    { label: "GitHub", url: "https://github.com/AbdullahSaeed444" },
+    { label: "Instagram", url: "https://www.instagram.com/codivico_official/" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/abdullah-saeed-awan-b44aa2279/" },
+  ],
   eyebrow: "Independent practice / 2026",
   skills: ["Next.js", "React", "WordPress", "custom development", "Neon/Postgres", "Clerk"],
   biography:
@@ -128,6 +145,7 @@ export const siteContent: SiteContent = {
       title: "Contact",
       intro: "For remote and part-time contract work, contact me at:",
       emailLabel: "Email",
+      socialsLabel: "Socials",
     },
     caseStudy: {
       labels: {
@@ -143,3 +161,20 @@ export const siteContent: SiteContent = {
   },
   footer: { contactLink: "Contact" },
 };
+
+export const visibleSocials = siteContent.socials.filter(
+  (social) => !social.url.toUpperCase().startsWith("TODO"),
+);
+
+if (process.env.NODE_ENV !== "production") {
+  const missingSocials = siteContent.socials.filter((social) =>
+    social.url.toUpperCase().startsWith("TODO"),
+  );
+
+  if (missingSocials.length > 0) {
+    console.warn(
+      "Missing social link URLs:",
+      missingSocials.map((social) => `${social.label}: ${social.url}`).join(", "),
+    );
+  }
+}

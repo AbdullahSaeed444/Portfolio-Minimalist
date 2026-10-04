@@ -15,7 +15,16 @@
   margin: var(--space-0);
 }
 
-.contactLink {
+.footerActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.contactLink,
+.footerActionLink {
   color: var(--color-ink);
 }
 
@@ -28,6 +37,10 @@
     grid-template-columns: 1fr auto;
     width: calc(100% - var(--space-8));
     font-size: var(--text-micro);
+  }
+
+  .footerActions {
+    justify-content: flex-start;
   }
 
   .credit {

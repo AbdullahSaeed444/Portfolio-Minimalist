@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteContent } from "@/content/site";
+import { siteContent, visibleSocials } from "@/content/site";
 import styles from "../interior.module.css";
 
 export const metadata = siteContent.metadata.pages.contact;
@@ -23,6 +23,24 @@ export default function ContactPage() {
           <p>
             <Link href="/work">{siteContent.home.allWorkLink}</Link>
           </p>
+        </div>
+      </section>
+      <section className={styles.section}>
+        <h2 className={styles.sectionLabel}>{siteContent.pages.contact.socialsLabel}</h2>
+        <div className={styles.sectionContent}>
+          {visibleSocials.map((social) => (
+            <div key={social.label} className={styles.socialRow}>
+              <span className={styles.socialLabel}>{social.label}</span>
+              <a
+                className={styles.socialLink}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {social.url}
+              </a>
+            </div>
+          ))}
         </div>
       </section>
     </main>
