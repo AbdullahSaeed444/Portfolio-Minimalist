@@ -1,0 +1,41 @@
+:root {
+  --color-paper: #f2f1eb;
+  --color-paper-bright: #faf9f4;
+  --color-ink: #191b18;
+  --color-muted: #66675f;
+  --color-rule: #c9c8bd;
+  --color-accent: #d64e2d;
+  --color-focus: #a5351c;
+
+  --font-body: var(--font-instrument-sans), sans-serif;
+
+  --text-micro: 0.75rem;
+  --text-small: 0.875rem;
+  --text-body: 1rem;
+  --text-lead: 1.25rem;
+  --text-subhead: 1.75rem;
+  --text-title: 3rem;
+  --text-display: 7rem;
+  --text-display-mobile: 3.5rem;
+
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  --line-rule: 1px solid var(--color-rule);
+  --content-width: 90rem;
+  --measure-copy: 36rem;
+  --line-tight: 0.94;
+  --line-normal: 1.5;
+}
